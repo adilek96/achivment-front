@@ -272,6 +272,8 @@ export default function RewardsPage() {
                     <option value="badge">Значок</option>
                     <option value="bonus_crypto">Бонус криптовалюты</option>
                     <option value="discount_commission">Скидка комиссии</option>
+                    <option value="cat_accessories">Аксессуары для кота</option>
+                    <option value="visual_effects">Визуальные эффекты</option>
                   </select>
                 </div>
               </div>
