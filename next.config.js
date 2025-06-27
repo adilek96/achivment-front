@@ -32,11 +32,6 @@ const nextConfig = {
     ];
   },
 
-  // Настройки для продакшена
-  experimental: {
-    optimizeCss: true,
-  },
-
   // Переменные окружения
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
