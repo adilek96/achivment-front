@@ -22,6 +22,17 @@ function normalizeTranslations(translations) {
   return result;
 }
 
+// Функция для получения перевода на русский язык
+function getRussianTranslation(field) {
+  if (typeof field === "object" && field?.ru) {
+    return field.ru;
+  } else if (typeof field === "string") {
+    return field;
+  } else {
+    return "";
+  }
+}
+
 export default function RewardsPage() {
   const [rewards, setRewards] = useState([]);
   const [achievements, setAchievements] = useState([]);
@@ -131,9 +142,9 @@ export default function RewardsPage() {
 
   const getAchievementTitle = (achievementId) => {
     const achievement = achievements.find((a) => a.id === achievementId);
-    return achievement
-      ? achievement.title?.ru || achievement.title || "Без названия"
-      : "Без достижения";
+    if (!achievement) return "Без достижения";
+
+    return getRussianTranslation(achievement.title) || "Без названия";
   };
 
   if (loading) {
@@ -189,14 +200,14 @@ export default function RewardsPage() {
               <tr key={reward.id}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-medium text-gray-900">
-                    {reward.title?.ru || reward.title || "Без названия"}
+                    {getRussianTranslation(reward.title) || "Без названия"}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {getTypeLabel(reward.type)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {reward.description?.ru || reward.description || "-"}
+                  {getRussianTranslation(reward.description) || "-"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {getAchievementTitle(reward.achievementId)}
@@ -291,8 +302,7 @@ export default function RewardsPage() {
                     <option value="">Выберите достижение</option>
                     {achievements.map((achievement) => (
                       <option key={achievement.id} value={achievement.id}>
-                        {achievement.title?.ru ||
-                          achievement.title ||
+                        {getRussianTranslation(achievement.title) ||
                           "Без названия"}
                       </option>
                     ))}
