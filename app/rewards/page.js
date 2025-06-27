@@ -123,6 +123,8 @@ export default function RewardsPage() {
       badge: "Значок",
       bonus_crypto: "Бонус криптовалюты",
       discount_commission: "Скидка комиссии",
+      cat_accessories: "Аксессуары для кота",
+      visual_effects: "Визуальные эффекты",
     };
     return types[type] || type;
   };

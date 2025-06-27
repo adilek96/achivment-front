@@ -6,7 +6,17 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start -p 3001",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next out",
+    "docker:build": "docker build -t achievement-admin .",
+    "docker:run": "docker run -p 3001:3001 achievement-admin",
+    "docker:compose": "docker-compose up -d",
+    "docker:compose:down": "docker-compose down",
+    "docker:compose:logs": "docker-compose logs -f",
+    "deploy:check": "npm run lint && npm run build",
+    "deploy:prod": "npm run build && npm start"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -19,5 +29,9 @@
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 } 
